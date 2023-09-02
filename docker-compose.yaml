@@ -1,0 +1,15 @@
+version: '3'
+services:
+  xray:
+    image: teddysun/xray:1.8.3
+    restart: always
+    ports:
+      - '443:443'
+    volumes:
+      - ./xray:/etc/xray
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
